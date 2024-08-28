@@ -1,4 +1,4 @@
-package xyz.radenadri.flutter_boilerplate
+package xyz.radenadri.gemini_chat
 
 import io.flutter.embedding.android.FlutterActivity
 

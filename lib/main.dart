@@ -1,32 +1,27 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_counter_app/config/routes.dart';
+import 'package:gemini_chat/config/constants.dart';
+import 'package:gemini_chat/config/routes.dart';
 
-void main() {
-  if (defaultTargetPlatform == TargetPlatform.iOS) {
-    runApp(
-      ProviderScope(
-        child: CupertinoApp.router(
-          routerConfig: iosRouter,
-          title: 'Flutter + Riverpod Boilerplate',
-          theme: const CupertinoThemeData(brightness: Brightness.light),
+void main() async {
+  await dotenv.load(fileName: '.env');
+
+  Gemini.init(
+    apiKey: GEMINI_AI_TOKEN,
+  );
+
+  runApp(
+    ProviderScope(
+      child: MaterialApp.router(
+        routerConfig: router,
+        title: 'Gemini Chat',
+        theme: ThemeData(
+          colorSchemeSeed: Colors.blue,
+          useMaterial3: true,
         ),
       ),
-    );
-  } else if (defaultTargetPlatform == TargetPlatform.android) {
-    runApp(
-      ProviderScope(
-        child: MaterialApp.router(
-          routerConfig: androidRouter,
-          title: 'Flutter + Riverpod Boilerplate',
-          theme: ThemeData(
-            colorSchemeSeed: Colors.green,
-            useMaterial3: true,
-          ),
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }
