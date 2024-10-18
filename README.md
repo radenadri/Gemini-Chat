@@ -2,6 +2,10 @@
 
 A flutter app that showing the usage of `flutter_gemini`, built with Riverpod.
 
+## Demo Apps
+
+https://github.com/user-attachments/assets/0fe84872-e47c-4673-8904-02e9f56dec80
+
 ## Notes
 
 While you developing, make sure you run :
